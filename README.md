@@ -8,4 +8,4 @@ This is the official implementation of PRISM: A Dual View of Reasoning — Seman
 
 ## 🌐 Demo
 
-👉 [View Demo](https://RuidiChang.github.io/PRISM-arxiv/prism_demo/)
+👉 [View Demo](https://chili-lab.github.io/PRISM/prism_demo/)
