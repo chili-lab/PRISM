@@ -5,3 +5,7 @@ This is the official implementation of PRISM: A Dual View of Reasoning — Seman
 <p align="center">
   <img src="prism_demo/prism.png" width="700">
 </p>
+
+## 🌐 Demo
+
+👉 [View Demo](https://RuidiChang.github.io/PRISM-arxiv/prism_demo/)
