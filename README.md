@@ -8,4 +8,4 @@ This is the official implementation of PRISM: A Dual View of Reasoning through S
 
 ## 🌐 Demo
 
-👉 [View Demo](./prism_demo/index.html)
+👉 [View Demo](https://agent-6a122b709e3380142ad07a6--jade-babka-69a618.netlify.app/)
