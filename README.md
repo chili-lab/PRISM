@@ -8,4 +8,4 @@ This is the official implementation of PRISM: A Dual View of Reasoning through S
 
 ## 🌐 Demo
 
-👉 [View Demo](./prism_demo/)
+👉 [View Demo](./prism_demo/index.html)
