@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRISM Analysis Dashboard</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', system-ui, sans-serif;
+        background: #F5F3F0; color: #2C2C2E; -webkit-font-smoothing: antialiased; }
+
+.hero { background: #fff; border-bottom: 1px solid #E8E4E0; padding: 48px 24px; text-align: center; }
+.hero h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; }
+.hero img { max-width: 800px; width: 95%; margin-bottom: 28px; }
+.hero .abstract { max-width: 800px; margin: 0 auto; text-align: justify; font-size: 14px;
+                   line-height: 1.7; color: #4A4A4C; }
+
+.container { max-width: 900px; margin: 32px auto; padding: 0 24px; }
+
+.section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+
+.all-link { display: block; background: #fff; border: 1px solid #7C8B9A; border-radius: 12px;
+             padding: 20px; text-decoration: none; color: inherit; margin-bottom: 24px;
+             text-align: center; transition: all 0.2s ease; }
+.all-link:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); transform: translateY(-1px); }
+.all-link .label { font-size: 16px; font-weight: 600; }
+.all-link .sub { font-size: 13px; color: #8E8E93; margin-top: 4px; }
+
+.selector { background: #fff; border: 1px solid #E8E4E0; border-radius: 12px;
+             padding: 24px; }
+
+.model-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.model-btn { padding: 10px 20px; border: 1px solid #E8E4E0; border-radius: 8px;
+              background: #FAFAF8; cursor: pointer; font-size: 14px; font-weight: 500;
+              color: #4A4A4C; transition: all 0.15s ease; }
+.model-btn:hover { border-color: #7C8B9A; }
+.model-btn.active { background: #2C2C2E; color: #fff; border-color: #2C2C2E; }
+
+.ds-panel { display: flex; gap: 10px; flex-wrap: wrap; }
+.ds-link { display: block; padding: 14px 24px; background: #FAFAF8; border: 1px solid #E8E4E0;
+            border-radius: 8px; text-decoration: none; color: #2C2C2E; font-size: 14px;
+            font-weight: 500; transition: all 0.15s ease; }
+.ds-link:hover { border-color: #7C8B9A; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+                  transform: translateY(-1px); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>PRISM Analysis Dashboard</h1>
+    <img src="prism.png" alt="PRISM Framework" onerror="this.style.display='none'">
+    <div class="abstract">
+        Large language models increasingly solve complex problems by generating multi-step
+        reasoning traces. Yet these traces are typically analyzed from only one of two perspectives:
+        the sequence of tokens across different reasoning steps in the generated text, or the
+        hidden-state vectors across model layers within one step. We introduce
+        <strong>PRISM</strong> (<strong>P</strong>robabilistic <strong>R</strong>easoning
+        <strong>I</strong>nspection through <strong>S</strong>emantic and
+        <strong>I</strong>mplicit <strong>M</strong>odeling), a framework and diagnostic tool
+        for jointly analyzing both levels, providing a unified view of how reasoning evolves
+        across steps and layers.
+    </div>
+</div>
+
+<div class="container">
+    <a href="all.html" class="all-link">
+        <div class="label">All Models &amp; Datasets (Aggregated)</div>
+    </a>
+
+    <div class="section-title">Select Model &amp; Dataset</div>
+    <div class="selector">
+        <div class="model-bar">
+            <button class="model-btn active" onclick="selectModel('stratos')" id="btn-stratos">Bespoke-Stratos-7B</button><button class="model-btn " onclick="selectModel('qwen')" id="btn-qwen">Qwen3-1.7B</button><button class="model-btn " onclick="selectModel('openthinker')" id="btn-openthinker">OpenThinker-7B</button><button class="model-btn " onclick="selectModel('nemotron')" id="btn-nemotron">Llama-3.1-Nemotron-Nano-4B-v1.1</button>
+        </div>
+        <div class="ds-panel" id="panel-stratos" style="display:flex;"><a href="stratos_gpqa_diamond.html" class="ds-link">GPQA-Diamond</a><a href="stratos_math500.html" class="ds-link">MATH500</a><a href="stratos_aime24.html" class="ds-link">AIME24</a><a href="stratos_tiger.html" class="ds-link">WebInstruct-verified</a></div><div class="ds-panel" id="panel-qwen" style="display:none;"><a href="qwen_gpqa_diamond.html" class="ds-link">GPQA-Diamond</a><a href="qwen_math500.html" class="ds-link">MATH500</a><a href="qwen_aime24.html" class="ds-link">AIME24</a><a href="qwen_tiger.html" class="ds-link">WebInstruct-verified</a></div><div class="ds-panel" id="panel-openthinker" style="display:none;"><a href="openthinker_gpqa_diamond.html" class="ds-link">GPQA-Diamond</a><a href="openthinker_math500.html" class="ds-link">MATH500</a><a href="openthinker_aime24.html" class="ds-link">AIME24</a><a href="openthinker_tiger.html" class="ds-link">WebInstruct-verified</a></div><div class="ds-panel" id="panel-nemotron" style="display:none;"><a href="nemotron_gpqa_diamond.html" class="ds-link">GPQA-Diamond</a><a href="nemotron_math500.html" class="ds-link">MATH500</a><a href="nemotron_aime24.html" class="ds-link">AIME24</a><a href="nemotron_tiger.html" class="ds-link">WebInstruct-verified</a></div>
+    </div>
+</div>
+
+<script>
+function selectModel(model) {
+    document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-' + model).classList.add('active');
+    document.querySelectorAll('.ds-panel').forEach(p => p.style.display = 'none');
+    document.getElementById('panel-' + model).style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
